@@ -1,5 +1,5 @@
 name: Outdated or broken guidance
-about: Flag a stale source, broken link, unsupported claim, or misleading packet state
+description: Flag a stale source, broken link, unsupported claim, or misleading packet state
 labels: ["correction", "needs-triage"]
 body:
   - type: input
