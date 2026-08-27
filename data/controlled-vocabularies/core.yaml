@@ -1,4 +1,4 @@
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 applicability_status:
   - suitable
   - potentially_suitable
@@ -30,3 +30,31 @@ coverage_status:
   - partial
   - complete
   - not_applicable
+coverage_area:
+  - entity_formation
+  - tax_exemption
+  - charitable_solicitation
+  - governance
+  - recurring_compliance
+  - employment
+  - immigration
+  - banking
+  - cross_border_grants
+  - foreign_donations
+  - grantmaking
+  - data_protection
+  - research_regulation
+  - sanctions_export_controls
+  - political_activity
+claim_type:
+  - procedural
+  - applicability
+  - formation
+  - governance
+  - tax
+  - fundraising
+  - cost
+  - timing
+  - obligation
+  - risk_escalation
+  - modeling_example
