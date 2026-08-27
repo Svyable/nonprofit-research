@@ -1,4 +1,4 @@
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 jurisdiction_id: "ZZ-EXAMPLE-1"
 display_name: "Illustrative single-level jurisdiction"
 publication_status: illustrative
@@ -22,16 +22,19 @@ routes:
         title: Create legal entity
       - id: operate
         title: Meet recurring obligations
+    source_ids: ["src-example-1"]
     review_status: draft
     reviewer_roles: []
     disclaimer: "Illustrative schema example only. It is not legal, tax, accounting, banking, employment, immigration, fundraising, sanctions, or data-protection advice."
 requirements:
   - requirement_id: "EX1-R1"
     title: "Illustrative formation filing"
+    route_id: "example-association-route"
     stage_id: form
     depends_on: []
     source_ids: ["src-example-1"]
     review_status: draft
+    reviewer_roles: []
 obligations: []
 sources:
   - source_id: "src-example-1"
@@ -46,6 +49,7 @@ claims:
     text: "This sentence exists only to exercise source-linked claims."
     claim_type: procedural
     source_ids: ["src-example-1"]
+    route_ids: ["example-association-route"]
     review_status: draft
     reviewer_roles: []
 local_review_questions:
