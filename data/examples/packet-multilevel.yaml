@@ -1,4 +1,4 @@
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 jurisdiction_id: "ZZ-EXAMPLE-2-SUB"
 display_name: "Illustrative subnational jurisdiction"
 parent_jurisdiction_id: "ZZ-EXAMPLE-2"
@@ -25,22 +25,27 @@ routes:
         title: Adopt governance documents
       - id: tax
         title: Seek separate recognition
+    source_ids: ["src-example-2a", "src-example-2b"]
     review_status: draft
     reviewer_roles: []
     disclaimer: "Illustrative schema example only. It is not legal, tax, accounting, banking, employment, immigration, fundraising, sanctions, or data-protection advice."
 requirements:
   - requirement_id: "EX2-R1"
     title: "Illustrative entity formation step"
+    route_id: "example-corporation-plus-recognition"
     stage_id: form
     depends_on: []
     source_ids: ["src-example-2a"]
     review_status: draft
+    reviewer_roles: []
   - requirement_id: "EX2-R2"
     title: "Illustrative recognition step"
+    route_id: "example-corporation-plus-recognition"
     stage_id: tax
     depends_on: ["EX2-R1"]
     source_ids: ["src-example-2b"]
     review_status: draft
+    reviewer_roles: []
 obligations: []
 sources:
   - source_id: "src-example-2a"
@@ -62,6 +67,7 @@ claims:
     text: "The example models entity formation and recognition as separate stages."
     claim_type: modeling_example
     source_ids: ["src-example-2a", "src-example-2b"]
+    route_ids: ["example-corporation-plus-recognition"]
     review_status: draft
     reviewer_roles: []
 local_review_questions:
