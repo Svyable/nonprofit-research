@@ -17,6 +17,7 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+          cache-dependency-path: packages/schemas/pyproject.toml
       - name: Install schema package
         run: python -m pip install -e "packages/schemas[dev]"
       - name: Validate corpus
