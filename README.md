@@ -21,29 +21,38 @@ Routes are described as `potentially_suitable`, `local_review_required`, `unknow
 
 The institutional archetype is an independent, curiosity-driven research centre with minimal teaching and administrative overhead, inspired in part by the London Institute for Mathematical Sciences. That institutional goal is portable; the legal implementation is local and reviewed.
 
+See `docs/adr/ADR-001-knowledge-commons-boundary.md` for the architectural decision that freezes this boundary before product interfaces are added.
+
 ## Repository principles
 
 1. **Corpus first.** Schemas, evidence, and editorial controls precede product interfaces.
 2. **Claim-level evidence.** Every substantive legal claim is separable from prose and linked to scoped source metadata.
 3. **Review is explicit.** Draft, source-checked, local-expert-reviewed, stale, and withdrawn content are visibly different states.
-4. **No false globality.** Coverage is published as complete, partial, draft, stale, or not started.
-5. **Readable and forkable.** Legal content and structured data remain independent from the application layer.
-6. **Read-only first.** The initial product exposes researched information and exports; it does not file forms or hold sensitive incorporation documents.
+4. **Freshness is enforceable.** Current reviewed evidence has explicit verification dates and editorial freshness intervals.
+5. **No false globality.** Coverage is published as complete, partial, draft, stale, or not started.
+6. **Readable and forkable.** Legal content and structured data remain independent from the application layer.
+7. **Read-only first.** The initial product exposes researched information and exports; it does not file forms or hold sensitive incorporation documents.
 
 ## Initial layout
 
 ```text
-docs/                    Project, safety, editorial, source, and data standards
+docs/                    Project, ADRs, safety, editorial, source, review, and data standards
 packages/schemas/        Pydantic contract and generated JSON Schema
 data/archetypes/         Portable research-centre archetypes
 data/jurisdictions/      Canonical jurisdiction index and reviewed packets
-data/examples/            Non-operational packets used to exercise the schema
-scripts/                  Corpus validation and maintenance utilities
-tests/                    Schema and review-gate tests
-.github/workflows/        CI validation
+data/examples/           Non-operational packets used to exercise the schema
+scripts/                 Corpus validation and freshness utilities
+tests/                   Schema, graph, vocabulary, review-gate, and freshness tests
+.github/                  Contributor templates, ownership, and CI validation
 ```
 
 The broader monorepo (`apps/`, additional `packages/`, source registry, API, UI, worker, and infrastructure) will be added only as those layers become executable. Empty application directories are deliberately not scaffolded in this PR.
+
+## Executable data contract
+
+Foundation schema version `0.2.0` adds route-scoped requirements, acyclic dependency enforcement, duplicate-ID guards, evidence-bearing routes, controlled coverage and claim types, packet-level review metadata, and source verification/freshness fields.
+
+A review label is not just presentation metadata. Promotion to `source_checked` or `local_expert_reviewed` is rejected unless the corresponding evidence gate is satisfied.
 
 ## Development
 
@@ -52,6 +61,7 @@ Requires Python 3.12+.
 ```bash
 python -m pip install -e "packages/schemas[dev]"
 python scripts/validate_corpus.py
+python scripts/check_freshness.py
 pytest
 python packages/schemas/export_json_schema.py --check
 ```
