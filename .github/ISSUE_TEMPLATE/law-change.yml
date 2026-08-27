@@ -1,0 +1,49 @@
+name: Law or process changed
+about: Report a substantive legal, regulatory, filing, fee, or process change
+labels: ["law-change", "needs-verification"]
+body:
+  - type: input
+    id: jurisdiction
+    attributes:
+      label: Jurisdiction ID
+      placeholder: "GB-ENG-WLS"
+    validations:
+      required: true
+  - type: input
+    id: ids
+    attributes:
+      label: Affected structured IDs
+      description: Claim, route, requirement, obligation, or source IDs if known.
+  - type: textarea
+    id: change
+    attributes:
+      label: What appears to have changed?
+      description: Describe the old and new rule/process without giving personalized legal advice.
+    validations:
+      required: true
+  - type: textarea
+    id: primary_source
+    attributes:
+      label: Official evidence
+      description: Provide the official source URL, effective date if known, and precise locator. Secondary reporting can be included as a lead but is not authoritative alone.
+    validations:
+      required: true
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: Likely impact
+      options:
+        - blocks or changes a formation/compliance step
+        - changes a fee, form, threshold, or portal
+        - changes a recurring obligation
+        - changes route suitability or scope
+        - unclear / needs triage
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: This report contains no sensitive personal or incorporation-document data.
+          required: true
