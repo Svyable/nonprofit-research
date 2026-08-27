@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import date
+from datetime import date, timedelta
 from enum import StrEnum
 from pathlib import Path
 from typing import Literal
@@ -380,6 +380,8 @@ class JurisdictionPacket(StrictModel):
             and source.verified_at is not None
             and source.verified_at <= verified_at
             and source.freshness_days is not None
+            and verified_at <= source.verified_at + timedelta(days=source.freshness_days)
+            and (source.effective_from is None or source.effective_from <= verified_at)
             and (source.effective_to is None or source.effective_to >= verified_at)
         ]
         if not checked:
