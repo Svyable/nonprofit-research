@@ -1,0 +1,54 @@
+name: New jurisdiction packet
+about: Propose a new legally meaningful jurisdiction for research
+labels: ["jurisdiction", "research"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Propose a jurisdiction scope, not a promise that a nonprofit can be formed there. Do not include personal incorporation documents or sensitive identifiers.
+  - type: input
+    id: jurisdiction
+    attributes:
+      label: Proposed jurisdiction ID and display name
+      description: Use the project taxonomy or explain why an extension is needed.
+      placeholder: "CA-ON — Ontario, Canada"
+    validations:
+      required: true
+  - type: textarea
+    id: legal_scope
+    attributes:
+      label: Why this is a legally meaningful scope
+      description: Identify country/subnational boundaries and the regulators or legal layers likely to matter.
+    validations:
+      required: true
+  - type: dropdown
+    id: archetype
+    attributes:
+      label: Initial institutional archetype
+      options:
+        - independent basic research centre
+        - policy research institute
+        - research funding foundation
+        - research network
+        - other / needs taxonomy work
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Candidate primary sources
+      description: List official registries, regulators, statutes, forms, tax/charity authorities, or gazettes to investigate. Leads are not treated as verified evidence.
+  - type: textarea
+    id: reviewer
+    attributes:
+      label: Local review path
+      description: What qualified local reviewer role would be appropriate, and is there a plausible path to obtaining that review?
+  - type: checkboxes
+    id: boundary
+    attributes:
+      label: Safety and scope checks
+      options:
+        - label: I am proposing public research, not requesting personalized legal advice or filing automation.
+          required: true
+        - label: I have not included passports, signatures, beneficial-owner records, or other sensitive incorporation data.
+          required: true
