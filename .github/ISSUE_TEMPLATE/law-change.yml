@@ -1,5 +1,5 @@
 name: Law or process changed
-about: Report a substantive legal, regulatory, filing, fee, or process change
+description: Report a substantive legal, regulatory, filing, fee, or process change
 labels: ["law-change", "needs-verification"]
 body:
   - type: input
