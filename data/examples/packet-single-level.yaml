@@ -1,0 +1,57 @@
+schema_version: "0.2.0"
+jurisdiction_id: "ZZ-EXAMPLE-1"
+display_name: "Illustrative single-level jurisdiction"
+publication_status: illustrative
+operational: false
+coverage:
+  entity_formation: partial
+  tax_exemption: planned
+  charitable_solicitation: not_started
+routes:
+  - route_id: "example-association-route"
+    title: "Illustrative public-benefit association route"
+    entity_family: association
+    intended_uses: [basic_research, public_education]
+    suitability:
+      independent_research_centre: potentially_suitable
+      international_grantmaking: specialist_review_required
+    stages:
+      - id: design
+        title: Define purpose and operating model
+      - id: form
+        title: Create legal entity
+      - id: operate
+        title: Meet recurring obligations
+    source_ids: ["src-example-1"]
+    review_status: draft
+    reviewer_roles: []
+    disclaimer: "Illustrative schema example only. It is not legal, tax, accounting, banking, employment, immigration, fundraising, sanctions, or data-protection advice."
+requirements:
+  - requirement_id: "EX1-R1"
+    title: "Illustrative formation filing"
+    route_id: "example-association-route"
+    stage_id: form
+    depends_on: []
+    source_ids: ["src-example-1"]
+    review_status: draft
+    reviewer_roles: []
+obligations: []
+sources:
+  - source_id: "src-example-1"
+    title: "Placeholder registry page"
+    publisher: "Example publisher"
+    url: "https://example.org/registry"
+    source_tier: unverified_lead
+    scope: ["ZZ-EXAMPLE-1", "association"]
+    accessed_at: 2026-08-27
+claims:
+  - claim_id: "EX1-C1"
+    text: "This sentence exists only to exercise source-linked claims."
+    claim_type: procedural
+    source_ids: ["src-example-1"]
+    route_ids: ["example-association-route"]
+    review_status: draft
+    reviewer_roles: []
+local_review_questions:
+  - "What actual legal form and regulator apply?"
+legal_notice: "Illustrative schema example only. It is not legal, tax, accounting, banking, employment, immigration, fundraising, sanctions, or data-protection advice."

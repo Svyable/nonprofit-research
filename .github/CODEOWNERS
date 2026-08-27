@@ -1,0 +1,9 @@
+# Temporary foundation ownership. Replace or expand as local reviewers join.
+* @Svyable
+
+# Substantive corpus changes always require explicit review.
+data/jurisdictions/ @Svyable
+docs/legal-safety-policy.md @Svyable
+docs/editorial-standard.md @Svyable
+docs/source-policy.md @Svyable
+packages/schemas/ @Svyable

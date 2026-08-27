@@ -1,0 +1,5 @@
+schema_version: "0.2.0"
+jurisdictions: []
+notes:
+  - No operational jurisdiction packets are published in the foundation phase.
+  - Add a jurisdiction only when its legally meaningful scope is documented and a packet exists.

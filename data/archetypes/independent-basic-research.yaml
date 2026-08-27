@@ -1,0 +1,20 @@
+archetype_id: independent-basic-research
+title: Independent basic-research centre
+description: >
+  An independent research institution primarily conducting curiosity-driven
+  research and publishing results, with researcher time intentionally protected
+  from routine teaching and avoidable administrative overhead.
+portable_governance_questions:
+  - How are scientific priorities set and reviewed?
+  - What is the role of the governing board versus scientific leadership?
+  - How are conflicts of interest disclosed and managed?
+  - What research-integrity and publication policies apply?
+  - What donor restrictions are acceptable?
+localization_required:
+  - entity form
+  - charitable or public-benefit purpose wording
+  - tax treatment
+  - fundraising registration
+  - employment and immigration
+  - data protection
+  - cross-border funding and sanctions

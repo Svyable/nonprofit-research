@@ -1,0 +1,46 @@
+name: Outdated or broken guidance
+description: Flag a stale source, broken link, unsupported claim, or misleading packet state
+labels: ["correction", "needs-triage"]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Packet, file, or page
+      description: Give the jurisdiction ID, repository path, or public page if available.
+    validations:
+      required: true
+  - type: input
+    id: ids
+    attributes:
+      label: Structured ID(s)
+      description: Claim, route, requirement, obligation, or source IDs if known.
+  - type: dropdown
+    id: problem
+    attributes:
+      label: Problem type
+      options:
+        - source link is broken or moved
+        - source verification is expired
+        - source no longer supports the proposition
+        - structured claim appears inaccurate
+        - dependency/order appears inaccurate
+        - review or coverage status appears misleading
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Explain what appears wrong and include a successor official source if one is known.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I understand a broken link alone does not prove the underlying law changed.
+          required: true
+        - label: This report contains no sensitive personal or incorporation-document data.
+          required: true
