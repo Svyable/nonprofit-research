@@ -1,5 +1,5 @@
 name: New jurisdiction packet
-about: Propose a new legally meaningful jurisdiction for research
+description: Propose a new legally meaningful jurisdiction for research
 labels: ["jurisdiction", "research"]
 body:
   - type: markdown
