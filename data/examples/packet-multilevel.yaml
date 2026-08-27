@@ -1,0 +1,69 @@
+schema_version: "0.1.0"
+jurisdiction_id: "ZZ-EXAMPLE-2-SUB"
+display_name: "Illustrative subnational jurisdiction"
+parent_jurisdiction_id: "ZZ-EXAMPLE-2"
+publication_status: illustrative
+operational: false
+coverage:
+  entity_formation: partial
+  tax_exemption: partial
+  charitable_solicitation: planned
+routes:
+  - route_id: "example-corporation-plus-recognition"
+    title: "Illustrative entity formation plus separate recognition"
+    entity_family: non_stock_corporation
+    intended_uses: [basic_research, research_grants]
+    suitability:
+      independent_research_centre: potentially_suitable
+      domestic_fundraising: local_review_required
+    stages:
+      - id: design
+        title: Define public-benefit purpose
+      - id: form
+        title: Create entity at subnational level
+      - id: govern
+        title: Adopt governance documents
+      - id: tax
+        title: Seek separate recognition
+    review_status: draft
+    reviewer_roles: []
+    disclaimer: "Illustrative schema example only. It is not legal, tax, accounting, banking, employment, immigration, fundraising, sanctions, or data-protection advice."
+requirements:
+  - requirement_id: "EX2-R1"
+    title: "Illustrative entity formation step"
+    stage_id: form
+    depends_on: []
+    source_ids: ["src-example-2a"]
+    review_status: draft
+  - requirement_id: "EX2-R2"
+    title: "Illustrative recognition step"
+    stage_id: tax
+    depends_on: ["EX2-R1"]
+    source_ids: ["src-example-2b"]
+    review_status: draft
+obligations: []
+sources:
+  - source_id: "src-example-2a"
+    title: "Placeholder entity registry"
+    publisher: "Example subnational registry"
+    url: "https://example.org/entity-registry"
+    source_tier: unverified_lead
+    scope: ["ZZ-EXAMPLE-2-SUB", "formation"]
+    accessed_at: 2026-08-27
+  - source_id: "src-example-2b"
+    title: "Placeholder recognition authority"
+    publisher: "Example national authority"
+    url: "https://example.org/recognition"
+    source_tier: unverified_lead
+    scope: ["ZZ-EXAMPLE-2", "recognition"]
+    accessed_at: 2026-08-27
+claims:
+  - claim_id: "EX2-C1"
+    text: "The example models entity formation and recognition as separate stages."
+    claim_type: modeling_example
+    source_ids: ["src-example-2a", "src-example-2b"]
+    review_status: draft
+    reviewer_roles: []
+local_review_questions:
+  - "Which rules attach to the parent jurisdiction and which attach to the subnational entity?"
+legal_notice: "Illustrative schema example only. It is not legal, tax, accounting, banking, employment, immigration, fundraising, sanctions, or data-protection advice."

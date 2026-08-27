@@ -1,0 +1,32 @@
+schema_version: "0.1.0"
+applicability_status:
+  - suitable
+  - potentially_suitable
+  - unsuitable
+  - unknown
+  - local_review_required
+  - specialist_review_required
+source_tier:
+  - official_primary
+  - official_interpretive
+  - professional_secondary
+  - community_reference
+  - unverified_lead
+review_status:
+  - draft
+  - source_checked
+  - local_expert_reviewed
+  - stale
+  - withdrawn
+publication_status:
+  - illustrative
+  - draft
+  - reviewed
+  - stale
+  - withdrawn
+coverage_status:
+  - not_started
+  - planned
+  - partial
+  - complete
+  - not_applicable

@@ -1,0 +1,27 @@
+name: validate-content
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install schema package
+        run: python -m pip install -e "packages/schemas[dev]"
+      - name: Validate corpus
+        run: python scripts/validate_corpus.py
+      - name: Run tests
+        run: pytest
+      - name: Check generated JSON Schema
+        run: python packages/schemas/export_json_schema.py --check

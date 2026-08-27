@@ -1,0 +1,58 @@
+schema_version: "0.1.0"
+jurisdiction_id: "ZZ-EXAMPLE-3"
+display_name: "Illustrative foundation-model jurisdiction"
+publication_status: illustrative
+operational: false
+coverage:
+  entity_formation: partial
+  tax_exemption: planned
+  charitable_solicitation: planned
+routes:
+  - route_id: "example-foundation-route"
+    title: "Illustrative foundation-style public-benefit route"
+    entity_family: foundation
+    intended_uses: [research_grants, basic_research]
+    suitability:
+      independent_research_centre: unknown
+      research_funding_foundation: potentially_suitable
+    stages:
+      - id: design
+        title: Define purpose, capital, and governance
+      - id: form
+        title: Establish the entity
+      - id: supervise
+        title: Identify supervisory requirements
+    review_status: draft
+    reviewer_roles: []
+    disclaimer: "Illustrative schema example only. It is not legal, tax, accounting, banking, employment, immigration, fundraising, sanctions, or data-protection advice."
+requirements:
+  - requirement_id: "EX3-R1"
+    title: "Illustrative endowment or capital question"
+    stage_id: design
+    depends_on: []
+    source_ids: ["src-example-3"]
+    review_status: draft
+obligations:
+  - obligation_id: "EX3-O1"
+    title: "Illustrative recurring supervisory filing"
+    cadence: annual
+    source_ids: ["src-example-3"]
+    review_status: draft
+sources:
+  - source_id: "src-example-3"
+    title: "Placeholder foundation authority"
+    publisher: "Example authority"
+    url: "https://example.org/foundations"
+    source_tier: unverified_lead
+    scope: ["ZZ-EXAMPLE-3", "foundation"]
+    accessed_at: 2026-08-27
+claims:
+  - claim_id: "EX3-C1"
+    text: "This example demonstrates that a foundation route can have different design questions from an association or corporation route."
+    claim_type: modeling_example
+    source_ids: ["src-example-3"]
+    review_status: draft
+    reviewer_roles: []
+local_review_questions:
+  - "Is capital legally required, and if so when must it be committed?"
+legal_notice: "Illustrative schema example only. It is not legal, tax, accounting, banking, employment, immigration, fundraising, sanctions, or data-protection advice."
