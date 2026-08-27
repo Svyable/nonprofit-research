@@ -259,6 +259,10 @@ class JurisdictionPacket(StrictModel):
                 raise ValueError(f"route {route.route_id} references missing sources: {sorted(missing)}")
             if route.verified_at and route.next_review_due and route.next_review_due <= route.verified_at:
                 raise ValueError(f"route {route.route_id} next_review_due must be after verified_at")
+            if route.review_status == ReviewStatus.LOCAL_EXPERT_REVIEWED and route.next_review_due is None:
+                raise ValueError(
+                    f"route {route.route_id} needs next_review_due for local expert review"
+                )
             self._validate_review_gate(
                 label=f"route {route.route_id}",
                 review_status=route.review_status,
@@ -374,7 +378,9 @@ class JurisdictionPacket(StrictModel):
             for source in sources
             if source.source_tier != SourceTier.UNVERIFIED_LEAD
             and source.verified_at is not None
+            and source.verified_at <= verified_at
             and source.freshness_days is not None
+            and (source.effective_to is None or source.effective_to >= verified_at)
         ]
         if not checked:
             raise ValueError(
