@@ -1,0 +1,519 @@
+{
+  "$defs": {
+    "ApplicabilityStatus": {
+      "enum": [
+        "suitable",
+        "potentially_suitable",
+        "unsuitable",
+        "unknown",
+        "local_review_required",
+        "specialist_review_required"
+      ],
+      "title": "ApplicabilityStatus",
+      "type": "string"
+    },
+    "Claim": {
+      "additionalProperties": false,
+      "properties": {
+        "claim_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]+$",
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "claim_type": {
+          "title": "Claim Type",
+          "type": "string"
+        },
+        "review_status": {
+          "$ref": "#/$defs/ReviewStatus",
+          "default": "draft"
+        },
+        "reviewer_roles": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reviewer Roles",
+          "type": "array"
+        },
+        "source_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "verified_at": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Verified At"
+        }
+      },
+      "required": [
+        "claim_id",
+        "text",
+        "claim_type",
+        "source_ids"
+      ],
+      "title": "Claim",
+      "type": "object"
+    },
+    "CoverageStatus": {
+      "enum": [
+        "not_started",
+        "planned",
+        "partial",
+        "complete",
+        "not_applicable"
+      ],
+      "title": "CoverageStatus",
+      "type": "string"
+    },
+    "Obligation": {
+      "additionalProperties": false,
+      "properties": {
+        "cadence": {
+          "title": "Cadence",
+          "type": "string"
+        },
+        "obligation_id": {
+          "title": "Obligation Id",
+          "type": "string"
+        },
+        "review_status": {
+          "$ref": "#/$defs/ReviewStatus",
+          "default": "draft"
+        },
+        "source_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "obligation_id",
+        "title",
+        "cadence",
+        "source_ids"
+      ],
+      "title": "Obligation",
+      "type": "object"
+    },
+    "PublicationStatus": {
+      "enum": [
+        "illustrative",
+        "draft",
+        "reviewed",
+        "stale",
+        "withdrawn"
+      ],
+      "title": "PublicationStatus",
+      "type": "string"
+    },
+    "Requirement": {
+      "additionalProperties": false,
+      "properties": {
+        "depends_on": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Depends On",
+          "type": "array"
+        },
+        "requirement_id": {
+          "title": "Requirement Id",
+          "type": "string"
+        },
+        "review_status": {
+          "$ref": "#/$defs/ReviewStatus",
+          "default": "draft"
+        },
+        "source_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        },
+        "stage_id": {
+          "title": "Stage Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "requirement_id",
+        "title",
+        "stage_id",
+        "source_ids"
+      ],
+      "title": "Requirement",
+      "type": "object"
+    },
+    "ReviewStatus": {
+      "enum": [
+        "draft",
+        "source_checked",
+        "local_expert_reviewed",
+        "stale",
+        "withdrawn"
+      ],
+      "title": "ReviewStatus",
+      "type": "string"
+    },
+    "Route": {
+      "additionalProperties": false,
+      "properties": {
+        "disclaimer": {
+          "title": "Disclaimer",
+          "type": "string"
+        },
+        "entity_family": {
+          "title": "Entity Family",
+          "type": "string"
+        },
+        "intended_uses": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Intended Uses",
+          "type": "array"
+        },
+        "next_review_due": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Next Review Due"
+        },
+        "review_status": {
+          "$ref": "#/$defs/ReviewStatus",
+          "default": "draft"
+        },
+        "reviewed_at": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reviewed At"
+        },
+        "reviewer_roles": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reviewer Roles",
+          "type": "array"
+        },
+        "route_id": {
+          "title": "Route Id",
+          "type": "string"
+        },
+        "stages": {
+          "items": {
+            "$ref": "#/$defs/Stage"
+          },
+          "minItems": 1,
+          "title": "Stages",
+          "type": "array"
+        },
+        "suitability": {
+          "additionalProperties": {
+            "$ref": "#/$defs/ApplicabilityStatus"
+          },
+          "title": "Suitability",
+          "type": "object"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "route_id",
+        "title",
+        "entity_family",
+        "stages",
+        "disclaimer"
+      ],
+      "title": "Route",
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "accessed_at": {
+          "format": "date",
+          "title": "Accessed At",
+          "type": "string"
+        },
+        "checksum": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Checksum"
+        },
+        "excerpt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Excerpt"
+        },
+        "locator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Locator"
+        },
+        "publisher": {
+          "title": "Publisher",
+          "type": "string"
+        },
+        "scope": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Scope",
+          "type": "array"
+        },
+        "snapshot_ref": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Snapshot Ref"
+        },
+        "source_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]+$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "source_tier": {
+          "$ref": "#/$defs/SourceTier"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "url": {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        },
+        "verified_at": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Verified At"
+        }
+      },
+      "required": [
+        "source_id",
+        "title",
+        "publisher",
+        "url",
+        "source_tier",
+        "scope",
+        "accessed_at"
+      ],
+      "title": "Source",
+      "type": "object"
+    },
+    "SourceTier": {
+      "enum": [
+        "official_primary",
+        "official_interpretive",
+        "professional_secondary",
+        "community_reference",
+        "unverified_lead"
+      ],
+      "title": "SourceTier",
+      "type": "string"
+    },
+    "Stage": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title"
+      ],
+      "title": "Stage",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "claims": {
+      "items": {
+        "$ref": "#/$defs/Claim"
+      },
+      "title": "Claims",
+      "type": "array"
+    },
+    "coverage": {
+      "additionalProperties": {
+        "$ref": "#/$defs/CoverageStatus"
+      },
+      "title": "Coverage",
+      "type": "object"
+    },
+    "display_name": {
+      "title": "Display Name",
+      "type": "string"
+    },
+    "jurisdiction_id": {
+      "title": "Jurisdiction Id",
+      "type": "string"
+    },
+    "legal_notice": {
+      "title": "Legal Notice",
+      "type": "string"
+    },
+    "local_review_questions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Local Review Questions",
+      "type": "array"
+    },
+    "obligations": {
+      "items": {
+        "$ref": "#/$defs/Obligation"
+      },
+      "title": "Obligations",
+      "type": "array"
+    },
+    "operational": {
+      "default": false,
+      "title": "Operational",
+      "type": "boolean"
+    },
+    "parent_jurisdiction_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Parent Jurisdiction Id"
+    },
+    "publication_status": {
+      "$ref": "#/$defs/PublicationStatus"
+    },
+    "requirements": {
+      "items": {
+        "$ref": "#/$defs/Requirement"
+      },
+      "title": "Requirements",
+      "type": "array"
+    },
+    "routes": {
+      "items": {
+        "$ref": "#/$defs/Route"
+      },
+      "title": "Routes",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "0.1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/Source"
+      },
+      "title": "Sources",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "jurisdiction_id",
+    "display_name",
+    "publication_status",
+    "coverage",
+    "legal_notice"
+  ],
+  "title": "JurisdictionPacket",
+  "type": "object"
+}
