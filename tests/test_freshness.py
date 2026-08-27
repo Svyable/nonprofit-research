@@ -2,9 +2,8 @@ from datetime import date
 from pathlib import Path
 
 import yaml
+from research_centre_atlas.freshness import freshness_failures
 from research_centre_atlas.schemas import JurisdictionPacket
-
-from scripts.check_freshness import freshness_failures
 
 
 ROOT = Path(__file__).resolve().parents[1]
